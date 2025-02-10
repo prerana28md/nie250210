@@ -1,0 +1,151 @@
+> 2+3
+5
+> 5/2
+2.5
+> parseInt(5/2)
+2
+> let first=10
+undefined
+> let second =4
+undefined
+> first/second
+2.5
+> if(first>second)
+...
+...
+...
+> if(first>second)
+...
+> for(let I=1;I<=5;I++){
+... console.log(I);
+... }
+1
+2
+3
+4
+5
+undefined
+> if(first>second)
+... console.log(first,'is max')
+10 is max
+undefined
+> let I=1;
+undefined
+> while(I<=5){
+... console.log(I);
+... I++;
+... }
+1
+2
+3
+4
+5
+5
+> let car1={id:'102011',number='KA25 T3456',model:'Ambesiter',type:'Sedan'}
+> let car1={id:'102011',number:'KA25 T3456',model:'Ambesiter',type:'Sedan'}
+undefined
+> car1.number
+'KA25 T3456'
+> car1.id
+'102011'
+> car1.model
+'Ambesiter'
+> car1.type
+'Sedan'
+> 'My car is of ${car1.type}'
+'My car is of ${car1.type}'
+> 'My car is of ${car1.type}`
+'My car is of ${car1.type}`
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Uncaught SyntaxError: Invalid or unexpected token
+> `My car is of ${car1.type}`
+'My car is of Sedan'
+> `The sum of ${a} and ${b} is ${sum}`
+Uncaught ReferenceError: a is not defined
+> let a=10, b=20;
+undefined
+> let sum=a+b;
+undefined
+>  `The sum of ${a} and ${b} is ${sum}`
+'The sum of 10 and 20 is 30'
+> let salaries=[1000,2000.0,3000.0];
+undefined
+> salaries[0]
+1000
+> salaries.push(4000.0)
+4
+> salaries
+[ 1000, 2000, 3000, 4000 ]
+> let {number}=car1
+undefined
+> number
+'KA25 T3456'
+> let names=['rahul','vinoth']
+undefined
+> let [name1,name2]=names
+undefined
+> name1
+'rahul'
+> name2
+'vinoth'
+> let salaries2=salaries;
+undefined
+> salaries2[2]=200;
+200
+> salaries
+[ 1000, 2000, 200, 4000 ]
+> salaries2
+[ 1000, 2000, 200, 4000 ]
+> let salaries=[...salaries]
+Uncaught SyntaxError: Identifier 'salaries' has already been declared
+> let salaries3=[...salaries]
+undefined
+> salaries3[2]=100;
+100
+> salaries
+[ 1000, 2000, 200, 4000 ]
+> salaries3
+[ 1000, 2000, 100, 4000 ]
+> let car2=car1;
+undefined
+> car2.type='SUV'
+'SUV'
+> car1
+{ id: '102011', number: 'KA25 T3456', model: 'Ambesiter', type: 'SUV' }
+> car2
+{ id: '102011', number: 'KA25 T3456', model: 'Ambesiter', type: 'SUV' }
+> let car3={... car1}
+undefined
+> car3.type='CUV'
+'CUV'
+> car1
+{ id: '102011', number: 'KA25 T3456', model: 'Ambesiter', type: 'SUV' }
+> car3
+{ id: '102011', number: 'KA25 T3456', model: 'Ambesiter', type: 'CUV' }
+> function findSum(first,second){
+... return first+second;
+... }
+undefined
+> findSum(10,20)
+30
+> findSum(10,30)
+40
+> const f=function(a,b){ return a+b;};
+undefined
+> f(2,3);
+5
+> const g=(a,b)
+undefined
+> const g=(a,b)=>a+b
+Uncaught SyntaxError: Identifier 'g' has already been declared
+> const g=(a,b)=>{return a+b;}
+Uncaught SyntaxError: Identifier 'g' has already been declared
+> const h=(a,b)=>{return a+b;
+... }
+undefined
+> g(2,3)
+Uncaught TypeError: g is not a function
+> h(2,3)
+5
+>
