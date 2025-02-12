@@ -3,7 +3,7 @@ function CoffeeEdit(){
     return(
         <>
         <PageHeader/>
-        <h3><a href="/coffee/list" className="btn btn-light">Go Back</a>Flight</h3>
+        <h3><a href="/coffee/list" className="btn btn-light">Go Back</a>Edit Order</h3>
                 <div className="container">
                     <div className="form-group mb-3">
                         <label for="number" className="form-label">ID</label>

@@ -2,8 +2,8 @@ import PageHeader from "../header/PageHeader";
 function CoffeeCreate(){
     return(
         <>
-        <PageHeader/>
-        <h3><a href="/coffee/list" className="btn btn-light">Go Back</a>Flight</h3>
+        <PageHeader PageNumber={2}/>
+        <h3><a href="/coffee/list" className="btn btn-light">Go Back</a>Make Order</h3>
       <div className="container">
         <div className="form-group mb-3">
           <label for="number" className="form-label">ID</label>
