@@ -20,7 +20,7 @@ function App() {//app is a functional component of UI
       {/* <Counter/> */}
       <FullName/>
     </>
-  )
+  );
 }
 
 export default App;
