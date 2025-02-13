@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useState} from 'react';//ui api 
 function FullName(){
     const [person,setPerson]=useState({first_name:'rahul',last_name:'Kumar'});
     const onChangeFirstNAme=(event)=>setPerson({...person,first_name:event.target.value});

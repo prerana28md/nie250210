@@ -2,17 +2,19 @@ package main
 import(
 	// "fmt"
 	"net/http"
+	"time"
 	"github.com/gin-gonic/gin"
+	"github.com/gin-contrib/cors"
 )
 
 type Flight struct{
-	Id string
-	Number string
-	AirlineName string
-	Source string
-	Destination string
-	Capacity int
-	Price float32
+	Id string       `json:"id"`
+	Number string    `json:"number"`
+	AirlineName string  `json:"airline_name"`
+	Source string     `json:"source"`
+	Destination string `json:"destination"`
+	Capacity int    `json:"capacity"`
+	Price float32    `json:"price"`
 }
 func readAllFlights(c *gin.Context){
 	//c.JSON(http.StatusOK, "Hello World")
@@ -66,6 +68,14 @@ func deleteFlight(c *gin.Context){
 func main(){
 	//router
 	r := gin.Default()
+	r.Use(cors.New(cors.Config{
+		AllowOrigins:     []string{"http://localhost:5175"}, // React frontend URL
+		AllowMethods:     []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"},
+		AllowHeaders:     []string{"Origin", "Content-Type", "Authorization"},
+		ExposeHeaders:    []string{"Content-Length"},
+		AllowCredentials: true,
+		MaxAge:           12 * time.Hour,
+	}))
 	//routes| API Endpoints
 	r.GET("/flights", readAllFlights)
 	r.GET("/flights/:id", readFlightById)

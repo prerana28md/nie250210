@@ -3,7 +3,7 @@ function CoffeeCreate(){
     return(
         <>
         <PageHeader PageNumber={2}/>
-        <h3><a href="/coffee/list" className="btn btn-light">Go Back</a>Make Order</h3>
+        <h3><a href="/coffee/list" className="btn btn-light btn-outline-success">Go Back</a>Make Order</h3>
       <div className="container">
         <div className="form-group mb-3">
           <label for="number" className="form-label">ID</label>
@@ -25,7 +25,7 @@ function CoffeeCreate(){
           <label for="capacity" className="form-label">Coffee Price</label>
           <input type="text" className="form-control" id="number" placeholder="Please enter total price of coffee"/>
         </div>
-        <button className="btn btn-primary">Make Order</button>
+        <button className="btn btn-primary btn-outline-light">Make Order</button>
       </div>
         </>
     );

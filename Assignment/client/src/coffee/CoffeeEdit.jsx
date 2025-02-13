@@ -3,7 +3,7 @@ function CoffeeEdit(){
     return(
         <>
         <PageHeader/>
-        <h3><a href="/coffee/list" className="btn btn-light">Go Back</a>Edit Order</h3>
+        <h3><a href="/coffee/list" className="btn btn-light btn-outline-success">Go Back</a>Edit Order</h3>
                 <div className="container">
                     <div className="form-group mb-3">
                         <label for="number" className="form-label">ID</label>
@@ -29,7 +29,7 @@ function CoffeeEdit(){
                         <input type="text" className="form-control" id="number"
                             placeholder="Please enter total price of coffee"/>
                     </div>
-                    <button className="btn btn-info">Change Order</button>
+                    <button className="btn btn-info btn-outline-success">Change Order</button>
                 </div>
         </>
     );

@@ -3,7 +3,7 @@ import FlightCreate from "./flights/FlightCreate"
 import FlightEdit from "./flights/FlightEdit"
 import { BrowserRouter,Route,Routes } from 'react-router-dom'
 //import Counter from "./Counter" 
-import FullName from "./FullName"
+// import FullName from "./FullName"
 function App() {//app is a functional component of UI
   return (
     <>
@@ -18,7 +18,7 @@ function App() {//app is a functional component of UI
         </BrowserRouter>
       </div>
       {/* <Counter/> */}
-      <FullName/>
+      {/* <FullName/> */}
     </>
   );
 }

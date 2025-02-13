@@ -1,72 +1,103 @@
 package main
-import(
-	// "fmt"
+
+import (
+	//"fmt"
 	"net/http"
+	"time"
+
 	"github.com/gin-gonic/gin"
+	"github.com/gin-contrib/cors"
 )
 
-type Coffee struct{
-	Id string
-	Category string
-	Type string
-	SugarLevel string
-	Price float32
-}
-func readAllCoffee(c *gin.Context){
-	//c.JSON(http.StatusOK, "Hello World")
-	coffees := []Coffee{
-	 			{Id:"56",Category:"Filter",Type:"Medium",SugarLevel:"Less",Price:123},
-				 {Id:"57",Category:"Instant",Type:"Small",SugarLevel:"Normal",Price:234},
-	}
-	c.JSON(http.StatusOK, coffees)
+type Flight struct {
+	Id          string	`json:"id"`
+	Number      string	`json:"number"`
+	ArilineName string	`json:"ariline_name"`
+	Source      string	`json:"source"`
+	Destination string	`json:"destination"`
+	Capacity    int		`json:"capacity"`
+	Price       float32	`json:"price"`
 }
 
-func readCoffeeById(c *gin.Context){
-	//c.JSON(http.StatusOK, "Hello World")
+func readAllFlights(c *gin.Context) {
+	flights := []Flight{
+		{Id: "1001", Number: "AI 845",
+			ArilineName: "Air India", Source: "Mumbai",
+			Destination: "Abu Dhabi", Capacity: 180,
+			Price: 15000.0},
+		{Id: "1002", Number: "AI 846",
+			ArilineName: "Air India", Source: "Abu Dhabi",
+			Destination: "Mumbai", Capacity: 180,
+			Price: 15000.0},
+	}
+	c.JSON(http.StatusOK, flights)
+}
+
+func readFlightById(c *gin.Context) {
 	id := c.Param("id")
-	coffee := Coffee{Id:id,Category:"Filter",Type:"Medium",SugarLevel:"Less",Price:123}
-	c.JSON(http.StatusOK, coffee)
-}
-func createCoffee(c *gin.Context){
-	var jbodyCoffee Coffee
-	err:=c.BindJSON(&jbodyCoffee)
-	if err!=nil{
-		c.JSON(http.StatusInternalServerError,gin.H{"error":err.Error()})
-		return
-	}
-	createCoffee := Coffee{Id:"56",Category:"Filter",Type:"Medium",SugarLevel:"Less",Price:123}
-	c.JSON(http.StatusCreated,gin.H{"message":"Coffee Order Created Sucessfully.","coffee":createCoffee})
+	flight := Flight {Id: id, Number: "AI 845",
+			ArilineName: "Air India", Source: "Mumbai",
+			Destination: "Abu Dhabi", Capacity: 180,
+			Price: 15000.0}
+	c.JSON(http.StatusOK, flight)
 }
 
-func updateCoffee(c *gin.Context){
-	id := c.Param("id")
-	var jbodyCoffee Coffee
-	err:=c.BindJSON(&jbodyCoffee)
-	if err!=nil{
-		c.JSON(http.StatusInternalServerError,gin.H{"error":err.Error()})
-		return
+func createFlight(c *gin.Context) {
+	var jbodyFlight Flight 
+	err := c.BindJSON(&jbodyFlight)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, 
+			gin.H{"error" : "Server Error." + err.Error()})
+		return 
 	}
-	updatedCoffee := Coffee{Id:id,Category:"Filter",Type:"Medium",SugarLevel:"Less",Price:123}
-	c.JSON(http.StatusOK,gin.H{"message":"updated Coffee Order Sucessfully.","flight":updatedCoffee})
-}
-func deleteCoffee(c *gin.Context){
-	// id := c.Param("id")
-	
-	
-	c.JSON(http.StatusOK,gin.H{"message":"Coffee Order deleted Sucessfully"})
+	createdFlight := Flight {Id: "1001", Number: "AI 845",
+				ArilineName: "Air India", Source: "Mumbai",
+				Destination: "Abu Dhabi", Capacity: 180, Price: 15000.0}
+	c.JSON(http.StatusCreated, 
+				gin.H{"message" : "Flight Created Successfully.",
+			         "flight" : createdFlight})
 }
 
-func main(){
+func updateFlight(c *gin.Context) {
+	id := c.Param("id")//
+	var jbodyFlight Flight 
+	err := c.BindJSON(&jbodyFlight)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, 
+			gin.H{"error" : "Server Error." + err.Error()})
+		return 
+	}
+	updatedFlight := Flight {Id: id, Number: "AI 845",//
+				ArilineName: "Air India", Source: "Mumbai",
+				Destination: "Abu Dhabi", Capacity: 180, Price: 15000.0}
+	c.JSON(http.StatusOK, 
+				gin.H{"message" : "Flight Updated Successfully.",//
+			         "flight" : updatedFlight})//
+}
+
+func deleteFlight(c *gin.Context) {
+	//id := c.Param("id")
+	c.JSON(http.StatusOK, 
+				gin.H{"message" : "Flight Deleted Successfully."})
+}
+func main() {
 	//router
 	r := gin.Default()
-	//routes| API Endpoints
-	r.GET("/coffees", readAllCoffee)
-	r.GET("/coffees/:id", readCoffeeById)
-	r.POST("/coffees", createCoffee)
-	r.PUT("/coffees/:id", updateCoffee)
-	r.DELETE("coffees/:id",deleteCoffee)
-	r.Run(":8080")
-// 	flight1 := Flight {Id:"1001", Number:"AI 845", AirlineName: "AirIndia", Source:"Mumbai",
-// 				Destination:"Abu Dabhi", Capacity:180, Price:15000}
-// 	fmt.Println(flight1)
- }
+	//cors
+	r.Use(cors.New(cors.Config{
+		AllowOrigins:     []string{"http://localhost:5173"}, // React frontend URL
+		AllowMethods:     []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"},
+		AllowHeaders:     []string{"Origin", "Content-Type", "Authorization"},
+		ExposeHeaders:    []string{"Content-Length"},
+		AllowCredentials: true,
+		MaxAge:           12 * time.Hour,
+	}))
+	//routes | API Endpoints
+	r.GET("/flights", readAllFlights)
+	r.GET("/flights/:id", readFlightById)
+	r.POST("/flights", createFlight)
+	r.PUT("/flights/:id", updateFlight)
+	r.DELETE("/flights/:id", deleteFlight)
+	//server 
+	r.Run(":8080")	
+}

@@ -6,7 +6,7 @@ function CoffeeList(){
         <h3>List of Coffee</h3>
     <div className="container">
         <table className="table table-info table-striped-columns table-bordered border-primary">
-            <thead className="table-dark">
+            <thead className="table-success">
                 <tr>
                     <th scope="col">Id</th>
                     <th scope="col">Type</th>
@@ -23,8 +23,8 @@ function CoffeeList(){
                     <td>Medium</td>
                     <td>Less</td>
                     <td>$123</td>
-                    <td><a href="/coffee/edit/1023459870" className="btn btn-info">Change Order</a>
-                        <button className="btn btn-secondary">Cancel Order</button>
+                    <td><a href="/coffee/edit/1023459870" className="btn btn-success">Change Order</a>
+                        <button className="btn btn-warning btn-outline-danger">Cancel Order</button>
                     </td>
                 </tr>
                 <tr>
@@ -33,8 +33,8 @@ function CoffeeList(){
                     <td>Small</td>
                     <td>Normal</td>
                     <td>$234</td>
-                    <td><a href="/coffee/edit/202111222" className="btn btn-info">Change Order</a>
-                        <button className="btn btn-secondary">Cancel Order</button>
+                    <td><a href="/coffee/edit/202111222" className="btn btn-success">Change Order</a>
+                        <button className="btn btn-warning btn-outline-danger">Cancel Order</button>
                     </td>
                 </tr>
             </tbody>
