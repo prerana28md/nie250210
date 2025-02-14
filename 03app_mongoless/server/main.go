@@ -6,9 +6,11 @@ import(
 	"github.com/gin-gonic/gin"
 	"github.com/gin-contrib/cors"
 )
+var mongoUri string ="mongodb://localhost:27017"
+var mongoDbName string ="ars_app_db"
 
 type Flight struct{
-	Id string       `json:"id"`
+	Id primitive.ObjectID       `json:"id"`
 	Number string    `json:"number"`
 	AirlineName string  `json:"airline_name"`
 	Source string     `json:"source"`
